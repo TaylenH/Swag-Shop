@@ -35,8 +35,12 @@ class App extends React.Component {
             Edit <code>src/App.js</code> welcome
           </p>
         </header>
-        <div className="App-main">
-          <Product />
+        <div className="App-main container">
+          <div className="row">
+            <Product price="4.23" className="col-sm-4" title="Cool Toy Gun" imgUrl="https://images-na.ssl-images-amazon.com/images/I/61IgIqKfWTL._SX425_.jpg"/>
+            <Product price="4.23" className="col-sm-4" title="Cool Toy Gun" imgUrl="https://images-na.ssl-images-amazon.com/images/I/61IgIqKfWTL._SX425_.jpg"/>
+            <Product price="4.23" className="col-sm-4" title="Cool Toy Gun" imgUrl="https://images-na.ssl-images-amazon.com/images/I/61IgIqKfWTL._SX425_.jpg"/>
+          </div>
         </div>
       </div>
     );
