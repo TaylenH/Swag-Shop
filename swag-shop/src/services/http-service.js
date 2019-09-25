@@ -2,9 +2,13 @@ import 'whatwg-fetch';
 
 class HttpService {
   getProducts = () => {
-    fetch('http://localhost:3004/product').then(res => {
-      console.log(res.json());
-    })
+    var promise = new Promise((resolve, reject) => {
+      fetch('http://localhost:3004/product').then(res =>{
+        resolve(res.json());
+      });
+    });
+
+    return promise;
   }
 }
 

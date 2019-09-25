@@ -3,13 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 import HttpService from '../services/http-service';
 
+//service for access products in swag shop api
 const http = new HttpService();
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    http.getProducts();
+
+    //bind function
+    this.loadData = this.loadData.bind(this);
+
+    this.loadData();
+  }
+
+  loadData = () => {
+    http.getProducts().then(products => {
+      console.log(products);
+    }, err => {
+
+    });
   }
 
   render() {
