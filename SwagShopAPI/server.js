@@ -10,6 +10,13 @@ var db = mongoose.connect('mongodb://localhost/swag-shop', {
 var Product = require("./models/product");
 var WishList = require("./models/wishList");
 
+app.all('/*', function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "POST, GET");
+  next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -100,6 +107,6 @@ app.put('/wishlist/product/add', function(req, res) {
   });
 });
 
-app.listen(3000, function() {
-  console.log("Swag shop api running on port 3000");
+app.listen(3004, function() {
+  console.log("Swag shop api running on port 3004");
 });
