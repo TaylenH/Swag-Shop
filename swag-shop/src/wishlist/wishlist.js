@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './wishlist.css';
 import ProductCondensed from "../productCondensed/productCondensed";
 import DataService from "../services/data-service"
+import NotificationService from "../services/notification-service";
 
 class WishList extends Component {
 
@@ -11,7 +12,7 @@ class WishList extends Component {
     this.state = {wishlist:[
       {
         title:"Bologna Killer",
-        price:23.99,
+        price:23.99
         _id:"asdfdf"
       },
       {
