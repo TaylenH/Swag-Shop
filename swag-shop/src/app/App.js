@@ -1,8 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+//services
 import HttpService from '../services/http-service';
+
+//components
 import Product from '../product/product';
+import WishList from '../wishlist/wishlist';
 
 //service for access products in swag shop api
 const http = new HttpService();
@@ -35,7 +40,7 @@ class App extends React.Component {
         <div className="col-sm-4" key={product._id}>
           <Product title={product.title} price={product.price} imgUrl={product.imgUrl} />
         </div>
-      )  
+      )
     });
 
     return (list);
@@ -43,16 +48,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App container">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> welcome
-          </p>
-        </header>
-        <div className="App-main container">
+      <div className="App">
+        <div className="App-main container-fluid">
           <div className="row">
-            {this.productList()}
+            <div className="col-sm-8">
+              <div className="row">
+                {this.productList()}
+              </div>
+            </div>
+            <div className="col-sm-4">
+              <WishList />
+            </div>
           </div>
         </div>
       </div>
