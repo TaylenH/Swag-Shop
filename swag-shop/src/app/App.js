@@ -12,18 +12,33 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {products: []};
     //bind function
     this.loadData = this.loadData.bind(this);
+    this.productList = this.productList.bind(this);
 
     this.loadData();
   }
 
   loadData = () => {
-    http.getProducts().then(products => {
-      console.log(products);
+    var self = this;
+    http.getProducts().then(data => {
+      self.setState({products: data});
     }, err => {
 
     });
+  }
+
+  productList = () => {
+    const list = this.state.products.map(product => {
+      return (
+        <div className="col-sm-4" key={product._id}>
+          <Product title={product.title} price={product.price} imgUrl={product.imgUrl} />
+        </div>
+      )  
+    });
+
+    return (list);
   }
 
   render() {
@@ -37,9 +52,7 @@ class App extends React.Component {
         </header>
         <div className="App-main container">
           <div className="row">
-            <Product price="4.23" className="col-sm-4" title="Cool Toy Gun" imgUrl="https://images-na.ssl-images-amazon.com/images/I/61IgIqKfWTL._SX425_.jpg"/>
-            <Product price="4.23" className="col-sm-4" title="Cool Toy Gun" imgUrl="https://images-na.ssl-images-amazon.com/images/I/61IgIqKfWTL._SX425_.jpg"/>
-            <Product price="4.23" className="col-sm-4" title="Cool Toy Gun" imgUrl="https://images-na.ssl-images-amazon.com/images/I/61IgIqKfWTL._SX425_.jpg"/>
+            {this.productList()}
           </div>
         </div>
       </div>
