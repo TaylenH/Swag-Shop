@@ -14,8 +14,18 @@ class DataService {
     return instance;
   }
 
-  addWishlistItem = item => {
-    wishlist.push(item);
+  itemOnWishlist = product => {
+    for(var i = 0; i < wishlist.length; i++){
+      if (wishlist[i]._id === product._id) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  addWishlistItem = product => {
+    wishlist.push(product);
     ns.postNotification(NOTIF_WISHLIST_CHANGED, wishlist);
   };
 
