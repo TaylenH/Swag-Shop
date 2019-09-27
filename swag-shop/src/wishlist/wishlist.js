@@ -12,7 +12,7 @@ class WishList extends Component {
     this.state = {wishlist:[
       {
         title:"Bologna Killer",
-        price:23.99
+        price:23.99,
         _id:"asdfdf"
       },
       {
